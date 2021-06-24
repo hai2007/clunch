@@ -10,6 +10,8 @@ import watcher from '../observe/watcher';
 function Clunch(options) {
 
     if (!(this instanceof Clunch)) {
+
+        // 必须使用 ```new Clunch()``` 的方式创建对象
         console.error('Clunch is a constructor and should be called with the `new` keyword');
         return;
     }
