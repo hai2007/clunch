@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.7.0
+ * version 1.7.1
  *
  * Copyright (c) 2020-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Jun 15 2021 13:48:15 GMT+0800 (中国标准时间)
+ * Date:Fri Jul 02 2021 10:49:08 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -984,8 +984,12 @@
     } // 如果相等
     else if (maxValue == minValue) {
         return [maxValue];
-      } // 为了变成 -100 ~ 100 需要放大或者缩小的倍数
+      } // 计算最终小数点应该保留的位数
 
+
+    var dotMaxNum = (maxValue + ".").split('.')[1].length;
+    var dotMinNum = (minValue + ".").split('.')[1].length;
+    var dotNum = dotMaxNum > dotMinNum ? dotMaxNum : dotMinNum; // 为了变成 -100 ~ 100 需要放大或者缩小的倍数
 
     var times100 = function (_value) {
       // 先确定基调，是放大还是缩小
@@ -1016,9 +1020,10 @@
     rulerArray.push(begin);
 
     for (index = 1; rulerArray[rulerArray.length - 1] < maxValue; index++) {
-      rulerArray.push(begin + distance * index);
+      rulerArray.push(+(begin + distance * index).toFixed(dotNum));
     }
 
+    rulerArray[0] = +begin.toFixed(dotNum);
     return rulerArray;
   }
 
