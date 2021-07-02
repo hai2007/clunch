@@ -32,9 +32,9 @@ help[key] ? "red" : "white"
         </h1>
         <pre q-code='html'><ui-demo c-on:eventName@regionNamee='doit' /></pre>
         <p>
-            对于任意一个组件，如果希望在此组件的某个区域上绑定交换事件，可以用上面的c-on指令，其中
+            对于任意一个组件，如果希望在此组件的某个区域上绑定交互事件，可以用上面的c-on指令，其中
             <span class="public">eventName</span>
-            是必输的，表示事件类型，支持如下几种：
+            是必输的，表示事件类型，支持下面几种事件：
         </p>
         <ul>
             <li>
@@ -145,7 +145,7 @@ data:"来自子区域的第二个参数data"
             是一个表达式，数据绑定可以自动监听数据改变来更新组件。
         </p>
         <p>
-            此外，由于此指令使用较多，你可以使用简写形式：
+            此指令还有简写形式：
         </p>
         <pre q-code='html'><ui-demo :attrName='expression' /></pre>
     </div>
