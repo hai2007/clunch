@@ -9,7 +9,7 @@
  * Copyright (c) 2020-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Fri Jul 02 2021 10:49:08 GMT+0800 (中国标准时间)
+ * Date:Fri Jul 02 2021 10:53:26 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -2943,6 +2943,7 @@
 
   function Clunch(options) {
     if (!(this instanceof Clunch)) {
+      // 必须使用 ```new Clunch()``` 的方式创建对象
       console.error('Clunch is a constructor and should be called with the `new` keyword');
       return;
     } // 对生命周期钩子进行预处理
