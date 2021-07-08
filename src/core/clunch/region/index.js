@@ -82,10 +82,8 @@ export default function (that, el) {
                         return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
                     }
                 }[p]();
-                regions_data[region_id] = data;
-            } else {
-                throw new Error('Duplicate Sub-Region name!');
             }
+            regions_data[region_id] = data;
 
             painter.config(initPainterConfig).config({
                 fillStyle: regions[region_id],

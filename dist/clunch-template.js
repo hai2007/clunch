@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.7.3
+ * version 1.7.4
  *
  * Copyright (c) 2020-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Thu Jul 08 2021 15:01:46 GMT+0800 (中国标准时间)
+ * Date:Thu Jul 08 2021 15:13:01 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -1800,10 +1800,9 @@
               return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
             }
           }[p]();
-          regions_data[region_id] = data;
-        } else {
-          throw new Error('Duplicate Sub-Region name!');
         }
+
+        regions_data[region_id] = data;
 
         _painter2.config(initPainterConfig).config({
           fillStyle: regions[region_id],
