@@ -10,6 +10,7 @@ export default function (that, el) {
     let _width = 1, _height = 1;
 
     let regions = {},//区域映射表
+        regions_data = {},//记录区域数据
         rgb = [0, 0, 0],//区域标识色彩,rgb(0,0,0)表示空白区域
         p = 'r';//色彩增值位置
 
@@ -63,23 +64,28 @@ export default function (that, el) {
          */
         "painter": function (region_id, data) {
 
-            if (regions[region_id] == undefined) regions[region_id] = {
-                'r': function () {
-                    rgb[0] += 1;
-                    p = 'g';
-                    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-                },
-                'g': function () {
-                    rgb[1] += 1;
-                    p = 'b';
-                    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-                },
-                'b': function () {
-                    rgb[2] += 1;
-                    p = 'r';
-                    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-                }
-            }[p]();
+            if (regions[region_id] == undefined) {
+                regions[region_id] = {
+                    'r': function () {
+                        rgb[0] += 1;
+                        p = 'g';
+                        return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+                    },
+                    'g': function () {
+                        rgb[1] += 1;
+                        p = 'b';
+                        return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+                    },
+                    'b': function () {
+                        rgb[2] += 1;
+                        p = 'r';
+                        return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+                    }
+                }[p]();
+                regions_data[region_id] = data;
+            } else {
+                throw new Error('Duplicate Sub-Region name!');
+            }
 
             painter.config(initPainterConfig).config({
                 fillStyle: regions[region_id],
@@ -99,13 +105,13 @@ export default function (that, el) {
                 // 查找当前点击的区域
                 for (let i in regions) {
                     if ("rgb(" + currentRGBA[0] + "," + currentRGBA[1] + "," + currentRGBA[2] + ")" == regions[i]) {
-                        doback([i, pos.x, pos.y]);
+                        doback([i, pos.x, pos.y, regions_data[i]]);
                         return;
                     }
                 }
 
                 // 说明当前不在任何区域
-                doback([null, pos.x, pos.y]);
+                doback([null, pos.x, pos.y, undefined]);
             };
 
             if (that._platform == 'default') {

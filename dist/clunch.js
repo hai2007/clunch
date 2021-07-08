@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.7.2
+ * version 1.7.3
  *
  * Copyright (c) 2020-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Fri Jul 02 2021 11:11:17 GMT+0800 (中国标准时间)
+ * Date:Thu Jul 08 2021 15:01:46 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -1731,6 +1731,8 @@
         _height = 1;
     var regions = {},
         //区域映射表
+    regions_data = {},
+        //记录区域数据
     rgb = [0, 0, 0],
         //区域标识色彩,rgb(0,0,0)表示空白区域
     p = 'r'; //色彩增值位置
@@ -1780,23 +1782,28 @@
        * region_id：区域唯一标识（一个标签上可以维护多个区域）
        */
       "painter": function painter(region_id, data) {
-        if (regions[region_id] == undefined) regions[region_id] = {
-          'r': function r() {
-            rgb[0] += 1;
-            p = 'g';
-            return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-          },
-          'g': function g() {
-            rgb[1] += 1;
-            p = 'b';
-            return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-          },
-          'b': function b() {
-            rgb[2] += 1;
-            p = 'r';
-            return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-          }
-        }[p]();
+        if (regions[region_id] == undefined) {
+          regions[region_id] = {
+            'r': function r() {
+              rgb[0] += 1;
+              p = 'g';
+              return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+            },
+            'g': function g() {
+              rgb[1] += 1;
+              p = 'b';
+              return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+            },
+            'b': function b() {
+              rgb[2] += 1;
+              p = 'r';
+              return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+            }
+          }[p]();
+          regions_data[region_id] = data;
+        } else {
+          throw new Error('Duplicate Sub-Region name!');
+        }
 
         _painter2.config(initPainterConfig).config({
           fillStyle: regions[region_id],
@@ -1814,13 +1821,13 @@
           // 查找当前点击的区域
           for (var i in regions) {
             if ("rgb(" + currentRGBA[0] + "," + currentRGBA[1] + "," + currentRGBA[2] + ")" == regions[i]) {
-              doback([i, pos.x, pos.y]);
+              doback([i, pos.x, pos.y, regions_data[i]]);
               return;
             }
           } // 说明当前不在任何区域
 
 
-          doback([null, pos.x, pos.y]);
+          doback([null, pos.x, pos.y, undefined]);
         };
 
         if (that._platform == 'default') {
