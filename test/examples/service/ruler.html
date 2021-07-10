@@ -33,7 +33,9 @@
                 return {
                     ruler: $ruler(90, 32, 7)
                 };
-            }]
+            }], mounted: function () {
+                console.log(this.ruler);
+            }
         });
 
         console.log(window.clunch);
