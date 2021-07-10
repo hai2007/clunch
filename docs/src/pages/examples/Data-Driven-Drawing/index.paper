@@ -1,0 +1,55 @@
+<template>
+    <div id='canvas'></div>
+</template>
+<script>
+    import image from './image.clunch';
+    import Clunch from 'clunch';
+    import line from './series/line';
+    import node from './series/node';
+    import data from './data';
+
+    Clunch.series('ui-node', node).series('ui-line', line);
+
+    export default {
+        mounted() {
+            window.clunch = new Clunch({
+                el: document.getElementById('canvas'),
+                render: image,
+                animation: false,
+                data() {
+                    return {
+                        lct: data,
+                        dragNodeId: null,
+                        help: 0
+                    };
+                },
+                methods: {
+                    doSelectWhoDrag(target) {
+                        // 确定当前选择的是哪个结点
+                        this.dragNodeId = target.id;
+                    }
+                }
+            }).$bind('mousemove', function (event) {
+                if (this.dragNodeId != null) {
+
+                    // 不断的更新结点的位置
+                    this.lct.nodes[this.dragNodeId].position = {
+                        x: event.left,
+                        y: event.top
+                    };
+                    this.help = new Date().valueOf();
+
+                }
+            }).$bind('mouseup', function () {
+                this.dragNodeId = null;
+            });
+
+        }
+    };
+</script>
+<style>
+    div {
+        width: 100vw;
+        height: 100vh;
+    }
+</style>

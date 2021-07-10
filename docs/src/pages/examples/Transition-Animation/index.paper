@@ -1,0 +1,57 @@
+<template>
+    <div id='canvas'></div>
+</template>
+<script>
+    import image from './image.clunch';
+    import Clunch from 'clunch';
+    import flare from '../../../assets/flare.js';
+    export default {
+        mounted() {
+            window.clunch = new Clunch({
+                el: document.getElementById('canvas'),
+                render: image,
+                resized() {
+                    this.doCalc(flare);
+                },
+                data() {
+                    return {
+                        treeData: [],
+                        help: []
+                    };
+                },
+                methods: {
+                    toggerNode(target) {
+                        // 在help中更新该节点的孩子是显示还是隐藏
+                        this.help[target.id.split(':')[1]] = !this.help[target.id.split(':')[1]];
+                        this.doCalc(flare);
+                    },
+                    doCalc: ["$tree", function ($tree) {
+                        return function (data) {
+                            this.treeData = $tree({
+                                // 配置基本的数据结构
+                                "root": initTree => initTree,
+                                "id": treedata => treedata.name,
+                                "child": parentTree => {
+                                    if (this.help[parentTree.name]) return [];
+                                    return parentTree.children;
+                                },
+
+                                // 配置树图结构
+                                "type": "circle",
+                                "cx": this._width * 0.5,
+                                "cy": this._height * 0.5,
+                                "radius": this._min * 0.4
+                            })(data).node;
+                        };
+                    }]
+                }
+            });
+        }
+    };
+</script>
+<style>
+    div {
+        width: 100vw;
+        height: 100vh;
+    }
+</style>

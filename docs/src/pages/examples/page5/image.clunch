@@ -1,5 +1,0 @@
-<!-- 进度图 -->
-<ui-process-wave :process='process' :deep='deep' :cx='0.5*_width' :cy='0.5*_height' :radius='0.45*_min' />
-
-<!-- 提示文字 -->
-<text :x='0.5*_width' :y='0.5*_height'  :content='process_value' align='center' font-size='50' />

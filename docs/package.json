@@ -1,6 +1,6 @@
 {
   "name": "clunch-doc",
-  "version": "1.15.6",
+  "version": "1.16.0",
   "description": "🎨 渐进的前端交互式图形框架clunch官方文档",
   "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server --config webpack.dev.js",

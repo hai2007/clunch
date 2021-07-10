@@ -15,8 +15,8 @@
                 <li title='使用中经常遇到的问题或疑惑' @click='openRouter("qa")' class='menu-1 qa'>
                     常见问题
                 </li>
-                <li title='基于clunch开发的例子' class='menu-1 examples'>
-                    <a href="#/examples" target="_blank">演示用例</a>
+                <li title='一些有用的资源的信息' class='menu-1 community'>
+                    <a href="https://clunch-contrib.github.io/community/" target="_blank">开发者社区</a>
                 </li>
                 <li title='issue'>
                     <a href="https://github.com/hai2007/clunch/issues" target="_blank">联系我们</a>
@@ -25,11 +25,8 @@
                     title='clunch.js 源码'>
                     Fork-me-on-Github
                 </li>
-                <li title='organization'>
-                    <a href="https://github.com/clunch-contrib" target="_blank">访问组织</a>
-                </li>
                 <li title='Sponsors'>
-                    <a href="https://hai2007.gitee.io/sweethome/#/Sponsors" target="_blank">捐款支持我们</a>
+                    <a href="https://hai2007.gitee.io/sweethome/#/Sponsors" target="_blank">支持我们</a>
                 </li>
             </ul>
         </nav>
@@ -38,7 +35,7 @@
         </div>
     </article>
     <div class="footer">
-        Copyright © 2020-2021
+        Copyright © 2018-2021
         <a href="https://hai2007.gitee.io/sweethome/" target="_blank">hai2007 走一步，再走一步。</a>
         All rights reserved.
         <br />

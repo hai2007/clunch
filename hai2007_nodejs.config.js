@@ -34,7 +34,7 @@ module.exports = {
  *
  * version ${pkg.version}
  *
- * Copyright (c) 2020-2021 hai2007 走一步，再走一步。
+ * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the ${pkg.license} license
  *
  * Date:${new Date()}

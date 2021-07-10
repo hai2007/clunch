@@ -1,9 +1,5 @@
 <template>
     <div id='examples-id'>
-        <a href="https://github.com/hai2007/clunch" class="github" target="_blank">Fork Library on Github</a>
-        <a href="javascript:void(0)" style='display: none;' id='examples-github-banner' class="examples-github "
-            target="_blank">Fork Examples Code
-            on Github</a>
         <component :is='page' />
     </div>
 </template>

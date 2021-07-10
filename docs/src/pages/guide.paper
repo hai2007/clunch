@@ -15,7 +15,8 @@
                 <p>
                     如果你可以正确的对业务数据进行修改，你就可以编辑一个交互的拖拽web应用。数据驱动绘图的设计，使得你只需把精力放在你的业务数据处理上，它负责绘图等比较难搞的部分。
                 </p>
-                <a class="demo index0" href='#/examples/page6' title='点击可以查看运行效果' target="_blank"></a>
+                <a class="demo Data-Driven-Drawing" href='#/examples/Data-Driven-Drawing' title='点击可以查看运行效果'
+                    target="_blank"></a>
                 <p>
                     上面是一个流程图，通过给每个节点和连线添加交互事件获取用户意图后，直接修改数据页面实时更新，就实现了一个简单的流程图编辑器。
                 </p>
@@ -25,7 +26,8 @@
                 <p>
                     只要你可以对普通标签添加交互事件，就可以处理几乎任意图形的交互事件。通过对单一标签的画布进行抽象，我们提供了区域和子区域的概念，你可以像操作标签一样操作canvas画布中的具体图形。
                 </p>
-                <a class="demo index1" href='#/examples/page4' title='点击可以查看运行效果' target="_blank"></a>
+                <a class="demo Regional-Management" href='#/examples/Regional-Management' title='点击可以查看运行效果'
+                    target="_blank"></a>
                 <p>
                     上面是一份中国地图（未包括海洋等部分区域），通过
                     <a href="#/api/directive?fixed=c-on" target="_blank">c-on</a>
@@ -37,7 +39,8 @@
                 <p>
                     如果图形改变过于僵硬需要添加动画效果怎么办？clunch.js会自动启动数据改变前后差异分析，然后给出合适的过渡方案，启动过渡动画。
                 </p>
-                <a class="demo index2" href='#/examples/page3' title='点击可以查看运行效果' target="_blank"></a>
+                <a class="demo Transition-Animation" href='#/examples/Transition-Animation' title='点击可以查看运行效果'
+                    target="_blank"></a>
                 <p>
                     上面的树图，点击某个结点后删除对应结点的孩子以后，树图会自动过渡成删除后的树图而不是突然改变。
                 </p>
@@ -56,13 +59,13 @@
                 获得更多交流。
             </p>
             <p class='logo'>
-                <h3>探索clunch.js的使用</h3>
-                <div>
-                    结合
-                    <a href="#/api" target="_blank">接口文档</a>
-                    多做练习，有问题联系我们！
-                </div>
-                <a href="https://github.com/hai2007/clunch" target="_blank">Github上查看源码</a>
+            <h3>探索clunch.js的使用</h3>
+            <div>
+                结合
+                <a href="#/api" target="_blank">接口文档</a>
+                多做练习，有问题联系我们！
+            </div>
+            <a href="https://github.com/hai2007/clunch" target="_blank">Github上查看源码</a>
             </p>
         </div>
         <div class='help'>
@@ -220,20 +223,20 @@
         position: relative;
     }
 
-    div.root>div.good>div>.demo.index0 {
+    div.root>div.good>div>.demo.Data-Driven-Drawing {
         background-size: auto 300px;
-        background-image: url('../assets/examples/view6.png');
+        background-image: url('../assets/examples/Data-Driven-Drawing.png');
         height: 200px;
     }
 
-    div.root>div.good>div>.demo.index1 {
+    div.root>div.good>div>.demo.Regional-Management {
         background-size: auto 90%;
-        background-image: url('../assets/examples/view4.png');
+        background-image: url('../assets/examples/Regional-Management.png');
     }
 
-    div.root>div.good>div>.demo.index2 {
+    div.root>div.good>div>.demo.Transition-Animation {
         background-size: auto 85%;
-        background-image: url('../assets/examples/view3.png');
+        background-image: url('../assets/examples/Transition-Animation.png');
     }
 
     div.root {

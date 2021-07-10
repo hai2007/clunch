@@ -89,29 +89,14 @@ const pages = {
 
     "examples": {
         "content": () => import('../pages/examples/index.paper'),
-        "menu": {
-            "content": () => import('../pages/examples/menu.paper')
+        "Data-Driven-Drawing": {
+            "content": () => import('../pages/examples/Data-Driven-Drawing/index.paper')
         },
-        "page1": {
-            "content": () => import('../pages/examples/page1/index.paper')
+        "Regional-Management": {
+            "content": () => import('../pages/examples/Regional-Management/index.paper')
         },
-        "page2": {
-            "content": () => import('../pages/examples/page2/index.paper')
-        },
-        "page3": {
-            "content": () => import('../pages/examples/page3/index.paper')
-        },
-        "page4": {
-            "content": () => import('../pages/examples/page4/index.paper')
-        },
-        "page5": {
-            "content": () => import('../pages/examples/page5/index.paper')
-        },
-        "page6": {
-            "content": () => import('../pages/examples/page6/index.paper')
-        },
-        "page7": {
-            "content": () => import('../pages/examples/page7/index.paper')
+        "Transition-Animation": {
+            "content": () => import('../pages/examples/Transition-Animation/index.paper')
         },
         "_default_": "menu"
     },
