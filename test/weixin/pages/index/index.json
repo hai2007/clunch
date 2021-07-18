@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "ui-clunch": "../../../../platform/weixin/clunch"
+    }
 }
