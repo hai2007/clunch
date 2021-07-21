@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const hai2007_nodejs = require('@hai2007/nodejs');
+
+process.title = 'clunch-cli';
+
+const parsed = hai2007_nodejs.option({}, process.argv);
+
+// 微信小程序
+// eg: clunch --weixin ./ui-clunch
+if ('weixin' in parsed) {
+    let weixin = parsed.weixin;
+
+    // 复制的目的地
+    let targetPath = hai2007_nodejs.fullPath(weixin[0]);
+
+    // 起点地址
+    let sourcePath = hai2007_nodejs.fullPath('../platform/weixin/ui-clunch', __dirname);
+
+    // 复制组件
+    hai2007_nodejs.copySync(sourcePath, targetPath);
+
+}

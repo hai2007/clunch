@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import uiClunch from '../../../../platform/uni-app/index.vue';
+	import uiClunch from 'clunch/platform/uni-app/index.vue';
 	export default {
 		data() {
 			return {

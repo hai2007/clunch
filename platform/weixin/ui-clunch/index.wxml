@@ -1,0 +1,11 @@
+<view>
+    <canvas
+        style="{{'width:'+(innerWidth+'px')+';'+('height:'+(innerHeight+'px')+';')}}"
+        canvas-id="painter">
+    </canvas>
+    <canvas
+        class="region"
+        style="{{'width:'+(innerWidth+'px')+';'+('height:'+(innerHeight+'px')+';')}}"
+        canvas-id="region">
+    </canvas>
+</view>

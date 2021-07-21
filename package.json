@@ -1,6 +1,6 @@
 {
   "name": "clunch",
-  "version": "1.7.5",
+  "version": "1.8.0-alpha.1",
   "description": "🎨 The Progressive JavaScript Interactive Picture Framework.",
   "main": "dist/clunch.min.js",
   "typings": "types/index.d.ts",
@@ -24,6 +24,9 @@
     "type": "git",
     "url": "git+https://github.com/hai2007/clunch.git"
   },
+  "bin": {
+    "clunch": "bin/run"
+  },
   "keywords": [
     "javascript",
     "framework",
@@ -39,7 +42,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
-    "@hai2007/nodejs": "^1.0.1",
     "@rollup/plugin-babel": "^5.2.1",
     "rollup": "^2.33.2",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -48,6 +50,7 @@
   },
   "dependencies": {
     "@hai2007/algorithm": "^0.5.1",
-    "@hai2007/tool": "^0.8.2"
+    "@hai2007/tool": "^0.8.2",
+    "@hai2007/nodejs": "^1.0.1"
   }
 }
