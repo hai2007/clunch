@@ -1,11 +1,4 @@
 <view>
-    <canvas
-        style="{{'width:'+(innerWidth+'px')+';'+('height:'+(innerHeight+'px')+';')}}"
-        canvas-id="painter">
-    </canvas>
-    <canvas
-        class="region"
-        style="{{'width:'+(innerWidth+'px')+';'+('height:'+(innerHeight+'px')+';')}}"
-        canvas-id="region">
-    </canvas>
+    <canvas type="2d" id="painter"></canvas>
+    <canvas type="2d" id="region" class="region"></canvas>
 </view>

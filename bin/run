@@ -22,4 +22,7 @@ if ('weixin' in parsed) {
     // 复制组件
     hai2007_nodejs.copySync(sourcePath, targetPath);
 
+    // 复制clunch
+    hai2007_nodejs.copySync(hai2007_nodejs.fullPath('../dist/clunch-template.js',__dirname), targetPath+"/clunch-template.js");
+
 }

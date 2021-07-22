@@ -6,3 +6,4 @@ node_modules
 unpackage
 .hbuilderx
 test/weixin/ui-clunch
+miniprogram_npm

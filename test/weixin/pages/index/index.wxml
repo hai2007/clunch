@@ -1,4 +1,4 @@
 <!--index.wxml-->
 <view class="container">
-    <ui-clunch></ui-clunch>
+    <ui-clunch id='clunch'></ui-clunch>
 </view>

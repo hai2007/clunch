@@ -1,8 +1,9 @@
 {
   "scripts": {
-      "init-clunch":"clunch --weixin ./ui-clunch"
+    "start": "npm install && npm run init-clunch",
+    "init-clunch": "clunch --weixin ./ui-clunch"
   },
   "dependencies": {
-    "clunch": "^1.8.0-alpha.1"
+    "clunch": "^1.8.0-alpha.2"
   }
 }
