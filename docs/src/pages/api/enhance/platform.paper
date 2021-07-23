@@ -28,12 +28,62 @@ export default {
         <p>
             最后，启动绘图：
         </p>
-        <pre q-code='javascript'>
-this.$refs.clunch.new({
+        <pre q-code>
+var clunch = this.$refs.clunch.new({
     // 目前只支持mousemove事件
     template:``,
     // ......
 },seriesList);
+        </pre>
+        <p class="warn">
+            温馨提示：seriesList可选，表示绘图中除了基本的内置组件外使用到的自定义组件！
+        </p>
+        <h1 id="fixed-weixin" class='beta'>微信小程序</h1>
+        <p>
+            我们提供的是一个微信小程序组件，首先需要安装：
+        </p>
+        <pre q-code>
+            npm install --save clunch
+        </pre>
+        <p>
+            安装完毕以后，进行初始化：
+        </p>
+        <pre q-code>
+            clunch --weixin ./ui-clunch
+        </pre>
+        <p>
+            接着，你还需要构建npm（通过在微信小程序开发工具界面的『工具』->『构建 npm』）。
+        </p>
+        <p>
+            然后注册组件：
+        </p>
+        <pre q-code>
+// page.json
+{
+    "usingComponents": {
+        "ui-clunch": "../../ui-clunch/index"
+    }
+}
+        </pre>
+        <p>
+            注册完毕就可以在页面中使用了：
+        </p>
+        <pre q-code='html'>
+            <ui-clunch id='clunch' width='200px' height='100px'></ui-clunch>
+        </pre>
+        <p class="warn">
+            温馨提示：上面的宽、高属性支持常见的运算，除了数字外，还支持px、vh、vw和rpx等单位。
+        </p>
+        <p>
+            最后，启动绘图：
+        </p>
+        <pre q-code>
+this.selectComponent('#clunch').new({
+    template:``,
+    // ......
+} , seriesList , clunch => {
+    // todo
+});
         </pre>
         <p class="warn">
             温馨提示：seriesList可选，表示绘图中除了基本的内置组件外使用到的自定义组件！

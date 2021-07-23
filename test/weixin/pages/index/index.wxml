@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-    <ui-clunch id='clunch'></ui-clunch>
+    <ui-clunch id='clunch' width='200px' height='100px'></ui-clunch>
     <button bindtap='doit'>
         绘制
     </button>

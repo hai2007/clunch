@@ -122,3 +122,19 @@
     font-size: .13rem;
     color: #000000;
 }
+
+.beta {
+    position: relative;
+}
+
+.beta::after {
+    content: "beta";
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    position: absolute;
+    display: inline-block;
+    height: 1.5em;
+    line-height: 1.5em;
+}

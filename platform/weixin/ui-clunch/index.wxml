@@ -1,4 +1,4 @@
 <view>
-    <canvas type="2d" id="painter"></canvas>
-    <canvas type="2d" id="region" class="region"></canvas>
+    <canvas type="2d" id="painter" style='width:{{innerWidth}}px;height:{{innerHeight}}px;'></canvas>
+    <canvas type="2d" id="region" style='width:{{innerWidth}}px;height:{{innerHeight}}px;' class="region"></canvas>
 </view>
