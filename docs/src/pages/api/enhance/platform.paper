@@ -46,10 +46,19 @@ var clunch = this.$refs.clunch.new({
             npm install --save clunch
         </pre>
         <p>
-            安装完毕以后，进行初始化：
+            安装完毕以后，配置初始化命令：
         </p>
         <pre q-code>
-            clunch --weixin ./ui-clunch
+// package.json
+{
+    "init-clunch": "clunch --weixin ./ui-clunch"
+}
+        </pre>
+        <p>
+            然后执行一下：
+        </p>
+        <pre q-code>
+            npm run init-clunch
         </pre>
         <p>
             接着，你还需要构建npm（通过在微信小程序开发工具界面的『工具』->『构建 npm』）。
