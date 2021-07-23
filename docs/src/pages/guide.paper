@@ -45,6 +45,15 @@
                     上面的树图，点击某个结点后删除对应结点的孩子以后，树图会自动过渡成删除后的树图而不是突然改变。
                 </p>
             </div>
+            <div>
+                <h2>支持跨端开发</h2>
+                <p>
+                    目前我们支持支付宝小程序，微信小程序和H5端开发，具体的内容可以
+                    <a href='#/api/enhance-platform' target="_blank">点击此处</a>
+                    查看文档。
+                </p>
+                <a class="demo platform" href='#/api/enhance-platform' title='点击可以查看文档' target="_blank"></a>
+            </div>
         </div>
         <div class="begin">
             <h2>
@@ -237,6 +246,11 @@
     div.root>div.good>div>.demo.Transition-Animation {
         background-size: auto 85%;
         background-image: url('../assets/examples/Transition-Animation.png');
+    }
+
+    div.root>div.good>div>.demo.platform {
+        background-size: auto 85%;
+        background-image: url('../assets/examples/platform.png');
     }
 
     div.root {

@@ -39,6 +39,13 @@
 
 上面的树图，点击某个结点后删除对应结点的孩子以后，树图会自动过渡成删除后的树图而不是突然改变。
 
+<h2 align="center" style='padding:10px 0 20px 0;color:red;'>🚀 支持跨端开发</h2>
+
+目前我们支持支付宝小程序，微信小程序和H5端开发，具体的内容可以[点击此处](https://hai2007.gitee.io/clunch/#/api/enhance-platform)查看文档。
+
+<p align="center"><a href="https://hai2007.gitee.io/clunch/#/api/enhance-platform" target="_blank">
+<img width="600" src="https://hai2007.gitee.io/clunch/dist/platform.png"></a></p>
+
 <h2 align="center" style='padding:10px 0 20px 0;color:red;'>🚀 加入我们</h2>
 
 目前clunch主要由 [你好2007](https://hai2007.gitee.io/sweethome/) 维护，当然也有来自一些使用者的 [意见](https://github.com/hai2007/clunch/issues) 和 [Pull requests](https://github.com/hai2007/clunch/pulls) 在帮忙我们不断改进和完善，在此我们表示由衷的感谢，我们会带着初心矢志不渝的坚持维护，并永远保持自由、开源、讨论和进步，期待你的加入。
