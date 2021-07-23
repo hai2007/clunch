@@ -41,7 +41,7 @@
 
 <h2 align="center" style='padding:10px 0 20px 0;color:red;'>🚀 支持跨端开发</h2>
 
-目前我们支持支付宝小程序，微信小程序和H5端开发，具体的内容可以[点击此处](https://hai2007.gitee.io/clunch/#/api/enhance-platform)查看文档。
+目前我们支持支付宝小程序、微信小程序和H5端开发，具体的内容可以[点击此处](https://hai2007.gitee.io/clunch/#/api/enhance-platform)查看文档。
 
 <p align="center"><a href="https://hai2007.gitee.io/clunch/#/api/enhance-platform" target="_blank">
 <img width="600" src="https://hai2007.gitee.io/clunch/dist/platform.png"></a></p>
