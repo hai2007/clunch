@@ -2,22 +2,6 @@ import toPx from './toPx';
 import Clunch from './clunch-template';
 
 let clunchObject = null;
-let getCanvasContext = (idName, width, height, doback) => {
-    wx.createSelectorQuery()
-        .select('#' + idName)
-        .fields({ node: true, size: true })
-        .exec((res) => {
-            const canvas = res[0].node;
-            const ctx = canvas.getContext('2d');
-
-            const dpr = wx.getSystemInfoSync().pixelRatio;
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            ctx.scale(dpr, dpr);
-
-            doback(ctx);
-        });
-};
 
 Component({
     properties: {
@@ -31,8 +15,8 @@ Component({
         }
     },
     data: {
-        innerWidth: 400,
-        innerHeight: 300
+        innerWidth: "",
+        innerHeight: ""
     },
     lifetimes: {
         ready() {
@@ -43,12 +27,29 @@ Component({
         }
     },
     methods: {
-        new(config, seriesList, doback) {
+        new(config, seriesList, callback) {
             // 添加自定义组件
             if (seriesList) Clunch.series(seriesList);
 
-            getCanvasContext("painter", this.innerWidth, this.innerHeight, painter => {
-                getCanvasContext("region", this.innerWidth, this.innerHeight, region => {
+            let getCanvasContext = (idName, doback) => {
+                const query = wx.createSelectorQuery().in(this);
+                query.select('#' + idName)
+                    .fields({ node: true, size: true })
+                    .exec((res) => {
+                        const canvas = res[0].node;
+                        const ctx = canvas.getContext('2d');
+
+                        const dpr = wx.getSystemInfoSync().pixelRatio;
+                        canvas.width = res[0].width * dpr;
+                        canvas.height = res[0].height * dpr;
+                        ctx.scale(dpr, dpr);
+
+                        doback(ctx);
+                    });
+            };
+
+            getCanvasContext("painter", painter => {
+                getCanvasContext("region", region => {
 
                     // 对参数进行补充
                     config.platform = "weixin";
@@ -60,16 +61,17 @@ Component({
                             region.getImageData(options, this);
                         },
                         width: +this.data.innerWidth,
-                        height: +this.data.innerHeight,
+                        height: +this.data.innerHeight
                     };
 
                     // 创建对象
                     clunchObject = new Clunch(config);
-                    if (doback) doback(clunchObject);
+                    if (callback) callback(clunchObject);
 
                 });
             });
 
         }
     }
+
 });

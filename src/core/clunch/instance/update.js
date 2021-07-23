@@ -74,9 +74,9 @@ export function updateMixin(Clunch) {
             }
         }
 
-        // 对于非默认平台，最后需要绘制一下才会显示
+        // 对于有的平台，最后特殊处理
 
-        if (this._platform != 'default') {
+        if (this._platform == 'uni-app') {
             this.__platform_painter.draw();
             if (this.__regionManager != null) {
                 this.__regionManager.draw();
@@ -112,7 +112,7 @@ export function updateMixin(Clunch) {
         }
 
         // 更新画布
-        this.__painter = painter(this._platform,this.__canvas, width, height);
+        this.__painter = painter(this._platform, this.__canvas, width, height);
 
         // 重置区域
         this.__regionManager.updateSize(width, height);
