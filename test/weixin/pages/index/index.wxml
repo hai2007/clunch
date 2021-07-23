@@ -1,4 +1,7 @@
 <!--index.wxml-->
 <view class="container">
     <ui-clunch id='clunch'></ui-clunch>
+    <button bindtap='doit'>
+        绘制
+    </button>
 </view>

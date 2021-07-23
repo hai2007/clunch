@@ -1,7 +1,6 @@
 const { evalExpress } = require('@hai2007/algorithm');
 
 export default function (valExpress) {
-    console.log(valExpress);
     if (typeof (valExpress) == 'number') return valExpress;
     let systemInfo = wx.getSystemInfoSync();
     let _valExpress = valExpress
