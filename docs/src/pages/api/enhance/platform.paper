@@ -88,6 +88,7 @@ var clunch = this.$refs.clunch.new({
         </p>
         <pre q-code>
 this.selectComponent('#clunch').new({
+    // 目前只支持mousemove事件
     template:``,
     // ......
 } , seriesList , clunch => {
