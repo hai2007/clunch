@@ -42,9 +42,9 @@ export default function (platform, canvas, width, height) {
     let config = {};
 
     // 配置生效方法
-    let useConfig = platform != 'default' ?
+    let useConfig = platform == 'uni-app' ?
 
-        // 当前除了默认环境就是uni-app，后续如果有新增可以再调整
+        // uni-app
         (key, value) => {
 
             // 如果已经存在默认配置中，说明只需要缓存起来即可
@@ -71,6 +71,7 @@ export default function (platform, canvas, width, height) {
         } :
 
         // 默认环境
+        // 微信小程序
         (key, value) => {
 
             /**

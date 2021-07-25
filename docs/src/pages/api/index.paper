@@ -241,7 +241,7 @@
                         <li>
                             <h4 @click='doScroll("uni-app")'>uni-app</h4>
                         </li>
-                        <li class='beta'>
+                        <li>
                             <h4 @click='doScroll("weixin")'>微信小程序</h4>
                         </li>
                     </ul>

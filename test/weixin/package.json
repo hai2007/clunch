@@ -4,6 +4,6 @@
     "init-clunch": "clunch --weixin ./ui-clunch"
   },
   "dependencies": {
-    "clunch": "^1.8.0-alpha.5"
+    "clunch": "1.8.0-beta.2"
   }
 }

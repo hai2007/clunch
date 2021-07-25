@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.8.0-beta.0
+ * version 1.8.0
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Fri Jul 23 2021 16:36:42 GMT+0800 (中国标准时间)
+ * Date:Sun Jul 25 2021 11:59:36 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -1471,7 +1471,7 @@
 
     var config = {}; // 配置生效方法
 
-    var useConfig = platform != 'default' ? // 当前除了默认环境就是uni-app，后续如果有新增可以再调整
+    var useConfig = platform == 'uni-app' ? // uni-app
     function (key, value) {
       // 如果已经存在默认配置中，说明只需要缓存起来即可
       if (["font-size", "font-family", "arc-start-cap", "arc-end-cap"].indexOf(key) > -1) {
@@ -1493,6 +1493,7 @@
         }
       }
     } : // 默认环境
+    // 微信小程序
     function (key, value) {
       /**
        * -----------------------------

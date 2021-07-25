@@ -2,6 +2,7 @@ import toPx from './toPx';
 import Clunch from './clunch-template';
 
 let clunchObject = null;
+let dpr = wx.getSystemInfoSync().pixelRatio;
 
 Component({
     properties: {
@@ -21,8 +22,8 @@ Component({
     lifetimes: {
         ready() {
             this.setData({
-                innerWidth: toPx(this.width || "100vw"),
-                innerHeight: toPx(this.height || "100vh")
+                innerWidth: toPx(this.data.width || "100vw"),
+                innerHeight: toPx(this.data.height || "100vh")
             });
         }
     },
@@ -39,7 +40,6 @@ Component({
                         const canvas = res[0].node;
                         const ctx = canvas.getContext('2d');
 
-                        const dpr = wx.getSystemInfoSync().pixelRatio;
                         canvas.width = res[0].width * dpr;
                         canvas.height = res[0].height * dpr;
                         ctx.scale(dpr, dpr);
@@ -58,7 +58,7 @@ Component({
                         region,
                         regionid: "region",
                         getRegionColor: (options) => {
-                            region.getImageData(options, this);
+                            options.success(region.getImageData(options.x * dpr, options.y * dpr, 1, 1));
                         },
                         width: +this.data.innerWidth,
                         height: +this.data.innerHeight
@@ -71,6 +71,15 @@ Component({
                 });
             });
 
+        },
+        doit(event) {
+            // 如果没有创建就不需要处理
+            if (!clunchObject) return;
+
+            clunchObject.$$trigger("mousemove", {
+                left: event.touches[0].x,
+                top: event.touches[0].y,
+            });
         }
     }
 

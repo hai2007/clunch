@@ -38,7 +38,7 @@ var clunch = this.$refs.clunch.new({
         <p class="warn">
             温馨提示：seriesList可选，表示绘图中除了基本的内置组件外使用到的自定义组件！
         </p>
-        <h1 id="fixed-weixin" class='beta'>微信小程序</h1>
+        <h1 id="fixed-weixin">微信小程序</h1>
         <p>
             我们提供的是一个微信小程序组件，首先需要安装：
         </p>
