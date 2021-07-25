@@ -21,8 +21,8 @@ Component({
     lifetimes: {
         ready() {
             this.setData({
-                innerWidth: toPx(this.width || "100vw"),
-                innerHeight: toPx(this.height || "100vh")
+                innerWidth: toPx(this.data.width || "100vw"),
+                innerHeight: toPx(this.data.height || "100vh")
             });
         }
     },
