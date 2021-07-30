@@ -134,3 +134,7 @@ v1.8.0:
     date:2021-07-25
     changes:
       - 添加了对微信小程序原生支持：https://github.com/hai2007/clunch/issues/16
+v1.8.1:
+    date:2021-07-30
+    changes:
+      - 修复由于window导致的在小程序中错误问题

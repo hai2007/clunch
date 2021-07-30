@@ -20,7 +20,7 @@ export default function (that) {
                 value = newValue;
 
                 if (!that.__observeWatcher.flag) {
-                    window.setTimeout(() => {
+                    setTimeout(() => {
 
                         // 数据改变，触发更新
                         that.$$updateWithData();

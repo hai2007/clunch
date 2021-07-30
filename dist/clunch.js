@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.8.0
+ * version 1.8.1
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Sun Jul 25 2021 11:59:36 GMT+0800 (GMT+08:00)
+ * Date:Fri Jul 30 2021 13:11:40 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -2971,7 +2971,7 @@
           value = newValue;
 
           if (!that.__observeWatcher.flag) {
-            window.setTimeout(function () {
+            setTimeout(function () {
               // 数据改变，触发更新
               that.$$updateWithData();
               that.__observeWatcher.flag = false;
@@ -3054,7 +3054,7 @@
           var interval = setInterval(function () {
             // 判断当前是否可以立刻更新
             if (that.__observeResize.help) {
-              window.clearInterval(interval);
+              clearInterval(interval);
               that.__observeResize.flag = false;
               that.$$updateWithSize();
             }

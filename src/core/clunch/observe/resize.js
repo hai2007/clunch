@@ -28,7 +28,7 @@ export default function (that) {
 
                     // 判断当前是否可以立刻更新
                     if (that.__observeResize.help) {
-                        window.clearInterval(interval);
+                        clearInterval(interval);
                         that.__observeResize.flag = false;
                         that.$$updateWithSize();
                     }
