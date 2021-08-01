@@ -57,16 +57,6 @@ Clunch.prototype.$mount = function (el) {
 
     }
 
-    // 否则就是非web平台，需要特殊处理
-    else {
-
-        this.__painter = painter(this._platform, el, el.width, el.height);
-        this.__platform_painter = el.painter;
-
-        this.$resize(el.width, el.height);
-
-    }
-
     // 触发数据改变更新
     this.$$updateWithData();
 
@@ -181,6 +171,16 @@ Clunch.prototype.$mount = function (el) {
     this._isMounted = true;
 
     this.$$lifecycle('mounted');
+
+    // 非web平台，需要特殊处理
+    if (this._platform != 'default') {
+
+        this.__painter = painter(this._platform, el, el.width, el.height);
+        this.__platform_painter = el.painter;
+
+        this.$resize(el.width, el.height);
+
+    }
 
     return this;
 };

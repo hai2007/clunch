@@ -13,10 +13,11 @@
 			}
 		},
 		mounted() {
-			let clunch=this.$refs.clunch.new({
-				template:`<circle c-on:mousemove='doit' :cx='_width*0.5' :cy='_height*0.5' :radius='_min*0.4'></circle>`,
-				methods:{
-					doit(target){
+			let clunch = this.$refs.clunch.new({
+				animation: false,
+				template: `<circle c-on:mousemove='doit' :cx='_width*0.5' :cy='_height*0.5' :radius='_min*0.4'></circle>`,
+				methods: {
+					doit(target) {
 						console.log(target);
 					}
 				}
@@ -26,12 +27,12 @@
 		methods: {
 
 		},
-		components:{
+		components: {
 			uiClunch
 		}
 	}
 </script>
 
 <style>
-	
+
 </style>

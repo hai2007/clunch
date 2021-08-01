@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.8.1
+ * version 1.8.2
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Fri Jul 30 2021 13:11:40 GMT+0800 (中国标准时间)
+ * Date:Sun Aug 01 2021 10:55:19 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -3174,12 +3174,7 @@
       this.__canvas = el.getElementsByTagName('canvas')[0]; // 挂载后以后，启动画布大小监听
 
       resize(this);
-    } // 否则就是非web平台，需要特殊处理
-    else {
-        this.__painter = painter(this._platform, el, el.width, el.height);
-        this.__platform_painter = el.painter;
-        this.$resize(el.width, el.height);
-      } // 触发数据改变更新
+    } // 触发数据改变更新
 
 
     this.$$updateWithData(); // 记录事件
@@ -3291,7 +3286,14 @@
 
 
     this._isMounted = true;
-    this.$$lifecycle('mounted');
+    this.$$lifecycle('mounted'); // 非web平台，需要特殊处理
+
+    if (this._platform != 'default') {
+      this.__painter = painter(this._platform, el, el.width, el.height);
+      this.__platform_painter = el.painter;
+      this.$resize(el.width, el.height);
+    }
+
     return this;
   }; // 解挂的意思是Clunch对象和页面解除关联
   // 后续绘制会停止，不过计算不会
