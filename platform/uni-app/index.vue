@@ -76,6 +76,14 @@ export default {
     this.innerWidth = toPx(this.width);
     this.innerHeight = toPx(this.height);
   },
+  watch: {
+    width() {
+      this.innerWidth = toPx(this.width);
+    },
+    height() {
+      this.innerHeight = toPx(this.height);
+    },
+  },
   methods: {
     new(config, seriesList) {
       // 添加自定义组件
