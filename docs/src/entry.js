@@ -29,6 +29,6 @@ window.quickPaper = new QuickPaper({
     //挂载点
     el: document.getElementById('root'),
 
-    // 启动iCrush
+    // 启动
     render: createElement => createElement(App)
 });
