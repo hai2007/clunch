@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 1.8.3
+ * version 2.0.0-alpha.0
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Sun Aug 01 2021 11:32:41 GMT+0800 (GMT+08:00)
+ * Date:Wed Aug 18 2021 11:11:05 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -2928,8 +2928,10 @@
 
         return subRenderSeries;
       })( // 分别表示：当前需要计算的AOP数组、父scope、是否是每个组件的子组件、父ID
-      this.__renderAOP, {}, false, "", false); // 如果没有前置数据，根本不需要动画效果
+      this.__renderAOP, {}, false, "", false); // 更新最新数据
 
+
+      this.__el.__clunch__devtool__target__ = this; // 如果没有前置数据，根本不需要动画效果
 
       if (!this.__renderSeries || noAnimation || !this.__animation) {
         this.__renderSeries = renderSeries;
@@ -3202,7 +3204,9 @@
     this.__el = el; // 默认是web平台
 
     if (this._platform == 'default') {
-      // 初始化添加画布
+      this.__el.setAttribute('__clunch__devtool__', new Date().valueOf() + "" + (Math.random() * 100000).toFixed(0)); // 初始化添加画布
+
+
       el.innerHTML = '<canvas>非常抱歉，您的浏览器不支持canvas!</canvas>';
       this.__canvas = el.getElementsByTagName('canvas')[0]; // 挂载后以后，启动画布大小监听
 
@@ -3353,6 +3357,7 @@
     this.__canvas = null;
     this._isMounted = false;
     this.$$lifecycle('unmounted');
+    this.__el.__clunch__devtool__target__ = null;
     return this;
   }; // 彻底销毁资源，无法再重新挂载
   // 主要是为了释放一些内置资源

@@ -280,6 +280,9 @@ export function updateMixin(Clunch) {
             // 分别表示：当前需要计算的AOP数组、父scope、是否是每个组件的子组件、父ID
             (this.__renderAOP, {}, false, "", false);
 
+        // 更新最新数据
+        this.__el.__clunch__devtool__target__ = this;
+
         // 如果没有前置数据，根本不需要动画效果
         if (!this.__renderSeries || noAnimation || !this.__animation) {
 

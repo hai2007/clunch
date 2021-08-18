@@ -48,6 +48,8 @@ Clunch.prototype.$mount = function (el) {
     // 默认是web平台
     if (this._platform == 'default') {
 
+        this.__el.setAttribute('__clunch__devtool__', new Date().valueOf() + "" + (Math.random() * 100000).toFixed(0));
+
         // 初始化添加画布
         el.innerHTML = '<canvas>非常抱歉，您的浏览器不支持canvas!</canvas>';
         this.__canvas = el.getElementsByTagName('canvas')[0];
@@ -210,6 +212,8 @@ Clunch.prototype.$unmount = function () {
     this.__canvas = null;
     this._isMounted = false;
     this.$$lifecycle('unmounted');
+
+    this.__el.__clunch__devtool__target__ = null;
 
     return this;
 };
