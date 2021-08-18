@@ -146,3 +146,7 @@ v1.8.3:
     date:2021-08-01
     changes:
       - 修复uni-app平台画布大小改变失效问题
+v2.0.0:
+    date:2021-08-18
+    changes:
+      - 配合浏览器插件进行改造（ https://github.com/clunch-contrib/Clunch-Browser-Extensions ）
