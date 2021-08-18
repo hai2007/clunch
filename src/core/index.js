@@ -213,8 +213,6 @@ Clunch.prototype.$unmount = function () {
     this._isMounted = false;
     this.$$lifecycle('unmounted');
 
-    this.__el.__clunch__devtool__target__ = null;
-
     return this;
 };
 

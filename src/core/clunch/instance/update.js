@@ -280,8 +280,20 @@ export function updateMixin(Clunch) {
             // 分别表示：当前需要计算的AOP数组、父scope、是否是每个组件的子组件、父ID
             (this.__renderAOP, {}, false, "", false);
 
-        // 更新最新数据
-        this.__el.__clunch__devtool__target__ = this;
+        // 更新最新数据(目前只支持web端的调试)
+        if (this._platform == 'default') {
+            this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', JSON.stringify({
+                render: {
+                    Options: this.__renderOptions,
+                    Series: this.__renderSeries,
+                    AOP: this.__renderAOP
+                },
+                data: this.__data,
+                animation: this.__animation,
+                width: this._width,
+                height: this._height
+            }));
+        }
 
         // 如果没有前置数据，根本不需要动画效果
         if (!this.__renderSeries || noAnimation || !this.__animation) {
