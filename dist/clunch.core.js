@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 2.0.0
+ * version 2.0.1
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Wed Aug 18 2021 23:09:47 GMT+0800 (GMT+08:00)
+ * Date:Thu Aug 19 2021 19:42:36 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -2645,6 +2645,25 @@
     };
   }
 
+  function getClunchBrowserExtensionsData (target) {
+    var data = {};
+
+    for (var key in target.__data) {
+      data[key] = target[key];
+    }
+    return JSON.stringify({
+      render: {
+        Options: target.__renderOptions,
+        Series: target.__renderSeries,
+        AOP: target.__renderAOP
+      },
+      data: data,
+      animation: target.__animation,
+      width: target._width,
+      height: target._height
+    });
+  }
+
   function updateMixin(Clunch) {
     // 重新绘制画布
     Clunch.prototype.$$updateView = function () {
@@ -2899,17 +2918,8 @@
 
 
       if (this._platform == 'default') {
-        this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', JSON.stringify({
-          render: {
-            Options: this.__renderOptions,
-            Series: this.__renderSeries,
-            AOP: this.__renderAOP
-          },
-          data: this.__data,
-          animation: this.__animation,
-          width: this._width,
-          height: this._height
-        }));
+        // 获取数据用于提供给浏览器调试插件使用
+        this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', getClunchBrowserExtensionsData(this));
       } // 如果没有前置数据，根本不需要动画效果
 
 

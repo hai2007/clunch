@@ -6,6 +6,8 @@ import painter from '../../painter/index';
 import getStyle from '../../../tool/get-style';
 import { initPainterConfig } from '../../painter/config';
 
+import getClunchBrowserExtensionsData from '../../../tool/Clunch-Browser-Extensions';
+
 // 数据更新或画布改变需要进行的更新处理方法
 
 export function updateMixin(Clunch) {
@@ -282,17 +284,10 @@ export function updateMixin(Clunch) {
 
         // 更新最新数据(目前只支持web端的调试)
         if (this._platform == 'default') {
-            this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', JSON.stringify({
-                render: {
-                    Options: this.__renderOptions,
-                    Series: this.__renderSeries,
-                    AOP: this.__renderAOP
-                },
-                data: this.__data,
-                animation: this.__animation,
-                width: this._width,
-                height: this._height
-            }));
+
+            // 获取数据用于提供给浏览器调试插件使用
+            this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', getClunchBrowserExtensionsData(this));
+
         }
 
         // 如果没有前置数据，根本不需要动画效果

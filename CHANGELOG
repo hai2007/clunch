@@ -150,3 +150,7 @@ v2.0.0:
     date:2021-08-18
     changes:
       - 配合浏览器插件进行改造（ https://github.com/clunch-contrib/Clunch-Browser-Extensions ）
+v2.0.1:
+    date:2021-08-19
+    changes:
+      - 修复提供数据给浏览器调试插件的时候，数据获取非最新内容错误
