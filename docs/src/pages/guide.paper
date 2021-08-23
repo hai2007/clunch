@@ -2,7 +2,6 @@
     <div class='root'>
         <header>
             clunch.js 官方文档
-            <span>{{version}}</span>
             <p>
                 特别感谢
                 <a href="https://github.com/hai2007/algorithm.js" target="_blank">algorithm.js</a>
@@ -88,13 +87,11 @@
     </div>
 </template>
 <script>
-    import pkg from '../../../package.json';
     import changeActive from '../Service/changeActive.js';
     export default {
         data() {
             return {
-                page: null,
-                version: pkg.version
+                page: null
             };
         },
         created() {
