@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 2.0.1
+ * version 2.0.2
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Thu Aug 19 2021 19:42:36 GMT+0800 (GMT+08:00)
+ * Date:Mon Aug 23 2021 17:48:35 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -2733,11 +2733,13 @@
 
 
       if (this._platform == 'uni-app') {
-        this.__platform_painter.draw();
+        setTimeout(function () {
+          _this.__platform_painter.draw();
 
-        if (this.__regionManager != null) {
-          this.__regionManager.draw();
-        }
+          if (_this.__regionManager != null) {
+            _this.__regionManager.draw();
+          }
+        }, 200);
       }
 
       this.$$lifecycle('drawed');

@@ -79,10 +79,12 @@ export function updateMixin(Clunch) {
         // 对于有的平台，最后特殊处理
 
         if (this._platform == 'uni-app') {
-            this.__platform_painter.draw();
-            if (this.__regionManager != null) {
-                this.__regionManager.draw();
-            }
+            setTimeout(() => {
+                this.__platform_painter.draw();
+                if (this.__regionManager != null) {
+                    this.__regionManager.draw();
+                }
+            }, 200);
         }
 
         this.$$lifecycle('drawed');
