@@ -1,10 +1,11 @@
 <template>
     <div class='menu-view'>
+
         <div>
-            <h2>基础使用</h2>
+            <h2>基础</h2>
             <ul>
                 <li>
-                    <h3 @click='openRouter("object")' class='menu-2 object'>绘图对象</h3>
+                    <h3 @click='openRouter("object")' class='menu-2 object'>对象</h3>
                     <ul>
                         <li>
                             <h4 @click='doScroll("config")'>配置项</h4>
@@ -45,10 +46,51 @@
                     </ul>
                 </li>
                 <li>
-                    <h3 @click='openRouter("series")' class='menu-2 series'>图形小组件</h3>
+                    <h3 @click='openRouter("series-list")' class='menu-2 series-list'>
+                        组件
+                    </h3>
                     <ul>
                         <li>
-                            <h4 @click='doScroll("create")'>如何自定义小组件</h4>
+                            <h4 @click='doScroll("what")'>组件是什么</h4>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("basic")'>单一组件</h4>
+                            <ul>
+                                <li>
+                                    <h5 @click='doScroll("arc")'>arc</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("circle")'>circle</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("path")'>path</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("rect")'>rect</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("text")'>text</h5>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("combine")'>复合组件</h4>
+                            <ul>
+                                <li>
+                                    <h5 @click='doScroll("ruler")'>ruler</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("polar-ruler")'>polar-ruler</h5>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("help")'>辅助组件</h4>
+                            <ul>
+                                <li>
+                                    <h5 @click='doScroll("group")'>group</h5>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <h4 @click='doScroll("attribute")'>组件属性</h4>
@@ -61,13 +103,44 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3 @click='openRouter("directive")' class='menu-2 directive'>指令</h3>
+                    <ul>
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <h4 @click='doScroll("expression")'>表达式</h4>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                         <li>
-                            <h4 @click='doScroll("core")'>核心组件</h4>
-                            <ul>
-                                <li>
-                                    <h5 @click='doScroll("group")'>group</h5>
-                                </li>
-                            </ul>
+                            <h4 @click='doScroll("c-on")'>c-on</h4>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("c-for")'>c-for</h4>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("c-if")'>c-if</h4>
+                        </li>
+                        <li>
+                            <h4 @click='doScroll("c-bind")'>c-bind</h4>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>
+                高级
+            </h2>
+            <ul>
+                <li>
+                    <h3 @click='openRouter("series")' class='menu-2 series'>自定义组件</h3>
+                    <ul>
+                        <li>
+                            <h4 @click='doScroll("create")'>语法</h4>
                         </li>
                     </ul>
                 </li>
@@ -104,32 +177,6 @@
                                     <h5 @click='doScroll("image")'>图片</h5>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3 @click='openRouter("directive")' class='menu-2 directive'>指令</h3>
-                    <ul>
-                        <ul>
-                            <li>
-                                <ul>
-                                    <li>
-                                        <h4 @click='doScroll("expression")'>表达式</h4>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <li>
-                            <h4 @click='doScroll("c-on")'>c-on</h4>
-                        </li>
-                        <li>
-                            <h4 @click='doScroll("c-for")'>c-for</h4>
-                        </li>
-                        <li>
-                            <h4 @click='doScroll("c-if")'>c-if</h4>
-                        </li>
-                        <li>
-                            <h4 @click='doScroll("c-bind")'>c-bind</h4>
                         </li>
                     </ul>
                 </li>
@@ -175,44 +222,10 @@
                     </ul>
                 </li>
             </ul>
-            <h2>组件</h2>
+            <h2>
+                进阶
+            </h2>
             <ul>
-                <li>
-                    <h3 @click='openRouter("series-list")' class='menu-2 series-list'>
-                        内置组件
-                    </h3>
-                    <ul>
-                        <li>
-                            <h4 @click='doScroll("basic")'>单一组件</h4>
-                            <ul>
-                                <li>
-                                    <h5 @click='doScroll("arc")'>arc</h5>
-                                </li>
-                                <li>
-                                    <h5 @click='doScroll("circle")'>circle</h5>
-                                </li>
-                                <li>
-                                    <h5 @click='doScroll("path")'>path</h5>
-                                </li>
-                                <li>
-                                    <h5 @click='doScroll("rect")'>rect</h5>
-                                </li>
-                                <li>
-                                    <h5 @click='doScroll("text")'>text</h5>
-                                </li>
-                            </ul>
-                            <h4 @click='doScroll("combine")'>复合组件</h4>
-                            <ul>
-                                <li>
-                                    <h5 @click='doScroll("ruler")'>ruler</h5>
-                                </li>
-                                <li>
-                                    <h5 @click='doScroll("polar-ruler")'>polar-ruler</h5>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
                 <li>
                     <h3 @click='openRouter("series-reuse")' class='menu-2 series-reuse'>
                         组件复用
@@ -230,9 +243,6 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
-            <h2>进阶使用</h2>
-            <ul>
                 <li>
                     <h3 @click='openRouter("enhance-platform")' class='menu-2 enhance-platform'>
                         兼容更多平台

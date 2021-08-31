@@ -24,7 +24,7 @@
             <li>
                 <span class="important">render</span>
                 ：必输（如果template没有传递的话），表示当前图形内容，你可以在
-                <a href="#/api/series?fixed=top" target="_blank">图形小组件</a>
+                <a href="#/api/series-list?fixed=top" target="_blank">组件</a>
                 部分了解更多细节。
             </li>
             <li>

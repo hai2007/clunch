@@ -1,8 +1,18 @@
 <template>
     <div class='doc-view'>
         <header id='fixed-top'>
-            内置组件
+            组件
         </header>
+        <h1 id='fixed-what'>组件是什么</h1>
+        <p>
+            组件就是用户用于表达意图的标签，非常类似div或者input标签。比如：
+        </p>
+        <pre q-code='html'>
+            <circle cx='100' cy='100' radius='50'></circle>
+        </pre>
+        <p>
+            表示希望在（100,100）的位置绘制一个半径大小为50的圆。框架内置了一些常用的组件，当然，用户也可以自定义组件。
+        </p>
         <h1 id="fixed-basic">单一组件</h1>
         <h3 id="fixed-arc">
             弧形
@@ -177,6 +187,49 @@
             <li><span class="important">color</span>：string，刻度尺颜色，默认'black'。</li>
         </ul>
         <button ui-goto-example='polar-ruler'>查看用例>>></button>
+        <h1 id="fixed-help">辅助组件</h1>
+        <h3 id="fixed-group">
+            组
+            <span class='sub-title'>
+                group
+            </span>
+        </h3>
+        <pre q-code='html'>
+<!-- 里面的组件可以成为一组 -->
+<group>
+    ......
+</group>
+        </pre>
+        <h1 id="fixed-attribute">组件属性</h1>
+        <h3 id='fixed-number'>
+            number类型
+        </h3>
+        <ul>
+            <li><span class="important">deg</span>：表示角度，例如2deg；</li>
+            <li><span class="important">pi</span>：表示弧度，例如2pi。</li>
+        </ul>
+        <h3 id='fixed-inner-attr'>
+            内置属性
+        </h3>
+        <p>
+            对于所有的组件，除了组件自己定义的特殊属性外，还有一类他们共有的属性，这些属性由框架本身提供，用于提供特殊的支持。下面来一一说明：
+        </p>
+        <h4>
+            _id
+        </h4>
+        <p>
+            组件的唯一标识（组件的子组件属性也支持这个属性），可选，默认由框架自动给出。
+        </p>
+        <h4>
+            _animation
+        </h4>
+        <p>
+            表示当前组件参与动画的方式，也就是数据改变导致的过渡动画如何运行，有如下值可以选择：
+        </p>
+        <ul>
+            <li><span class="important">lazy</span>：懒惰的，比如一个组件存在c-if指令，由于数据改变由隐藏变成显示，会等动画结束后再显示，缺省值；</li>
+            <li><span class="important">quick</span>：快速的，比如一个组件存在c-if指令，由于数据改变由隐藏变成显示，会立刻显示。</li>
+        </ul>
     </div>
 </template>
 <script>

@@ -1,9 +1,9 @@
 <template>
     <div class='doc-view'>
         <header id='fixed-top'>
-            图形小组件
+            自定义组件
         </header>
-        <h1 id="fixed-create">如何自定义小组件</h1>
+        <h1 id="fixed-create">语法</h1>
         <pre q-code>Clunch.series('ui-demo',["type1",...,"server1", ..., function($type1,...,server1, ...){
     return {
         // 定义属性，可选
@@ -53,7 +53,6 @@
             <a href="#/api/service?fixed=top" target="_blank">服务</a>
             一节。
         </p>
-        <h1 id="fixed-attribute">组件属性</h1>
         <p>
             需要说明的是以下几点：
         </p>
@@ -71,48 +70,6 @@
                 ：作为clunch内置指令保留字段，也请勿使用；
             </li>
         </ul>
-        <h3 id='fixed-number'>
-            number类型
-        </h3>
-        <ul>
-            <li><span class="important">deg</span>：表示角度，例如2deg；</li>
-            <li><span class="important">pi</span>：表示弧度，例如2pi。</li>
-        </ul>
-        <h3 id='fixed-inner-attr'>
-            内置属性
-        </h3>
-        <p>
-            对于所有的组件，除了组件自己定义的特殊属性外，还有一类他们共有的属性，这些属性由框架本身提供，用于提供特殊的支持。下面来一一说明：
-        </p>
-        <h4>
-            _id
-        </h4>
-        <p>
-            组件的唯一标识（组件的子组件属性也支持这个属性），可选，默认由框架自动给出。
-        </p>
-        <h4>
-            _animation
-        </h4>
-        <p>
-            表示当前组件参与动画的方式，也就是数据改变导致的过渡动画如何运行，有如下值可以选择：
-        </p>
-        <ul>
-            <li><span class="important">lazy</span>：懒惰的，比如一个组件存在c-if指令，由于数据改变由隐藏变成显示，会等动画结束后再显示，缺省值；</li>
-            <li><span class="important">quick</span>：快速的，比如一个组件存在c-if指令，由于数据改变由隐藏变成显示，会立刻显示。</li>
-        </ul>
-        <h1 id="fixed-core">核心组件</h1>
-        <h3 id="fixed-group">
-            组
-            <span class='sub-title'>
-                group
-            </span>
-        </h3>
-        <pre q-code='html'>
-<!-- 里面的组件可以成为一组 -->
-<group>
-    ......
-</group>
-        </pre>
     </div>
 </template>
 <script>
