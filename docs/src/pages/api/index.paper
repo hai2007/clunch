@@ -142,6 +142,23 @@
                         <li>
                             <h4 @click='doScroll("create")'>语法</h4>
                         </li>
+                        <li>
+                            <h4 @click='doScroll("config")'>配置项</h4>
+                            <ul>
+                                <li>
+                                    <h5 @click='doScroll("attrs")'>attrs</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("subAttrs")'>subAttrs</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("region")'>region</h5>
+                                </li>
+                                <li>
+                                    <h5 @click='doScroll("link")'>link</h5>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li>
