@@ -8,7 +8,7 @@
     return {
 
         // 定义属性，可选
-        attr:{},
+        attrs:{},
 
         // 子组件配置，可选
         subAttrs:{},
