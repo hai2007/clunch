@@ -45,8 +45,6 @@
 import Clunch from "../../dist/clunch-template";
 import toPx from "./toPx";
 
-let clunchObject = null;
-
 /**
  * 图形框架clunch在uni-app中的兼容组件
  * @description clunch相关文档地址 https://hai2007.gitee.io/clunch/
@@ -59,6 +57,7 @@ export default {
       innerWidth: "0",
       innerHeight: "0",
       uniqueid: (Math.random() * 10000).toFixed(0),
+      help: {},
     };
   },
   props: {
@@ -117,15 +116,15 @@ export default {
       };
 
       // 创建对象
-      clunchObject = new Clunch(config);
-      return clunchObject;
+      this.help.clunchObject = new Clunch(config);
+      return this.help.clunchObject;
     },
     doit(event) {
       // 如果没有创建就不需要处理
-      if (!clunchObject) return;
+      if (!this.help.clunchObject) return;
 
       // #ifndef MP-ALIPAY
-      clunchObject.$$trigger("mousemove", {
+      this.help.clunchObject.$$trigger("mousemove", {
         left: event.touches[0].x,
         top: event.touches[0].y,
       });
@@ -136,7 +135,7 @@ export default {
         .selectViewport()
         .scrollOffset()
         .exec((ret) => {
-          clunchObject.$$trigger("mousemove", {
+          this.help.clunchObject.$$trigger("mousemove", {
             left: event.touches[0].x + ret[0].scrollLeft,
             top: event.touches[0].y + ret[0].scrollTop,
           });
