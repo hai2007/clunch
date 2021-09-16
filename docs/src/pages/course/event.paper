@@ -118,7 +118,7 @@ new Clunch({
         </p>
         <div id='canvas-4' style='height:360px;'></div>
         <p>
-            打开控制台，点击的时候就会打印你点击结点的信息：
+            点击的时候浏览器就会弹框给出你点击结点的信息（下面是个例子，你可以点击试试）：
         </p>
         <pre q-code>
 attr: {fill-color: "red", stroke-color: "black", line-width: 1, dash: Array(0), type: "fill", …}
@@ -132,7 +132,7 @@ top: 195
 __proto__: Object
         </pre>
         <p>
-            打印的信息每项具体什么意思，你可以
+            每项具体什么意思，你可以
             <a href="#/api/directive?fixed=c-on" target="_blank">点击此处</a>
             进行查阅，这里就不再赘述了。
         </p>
@@ -181,7 +181,7 @@ __proto__: Object
                 },
                 methods: {
                     doit(target) {
-                        console.log(target);
+                        alert(JSON.stringify(target, null, 4));
                     }
                 }
             });

@@ -28,6 +28,12 @@
                 部分了解更多细节。
             </li>
             <li>
+                <span class="important">debug</span>
+                ：可选，默认true，表示开启调试，如果设置为false，就会关闭调试（
+                <span class="warn">如果你需要使用浏览器的调试插件，请勿关闭此项</span>
+                ）。
+            </li>
+            <li>
                 <span class="important">animation</span>
                 ：可选，默认true，表示数据改变提供动画，如果设置为false，就会取消数据改变动画。
             </li>

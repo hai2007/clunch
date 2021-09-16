@@ -285,7 +285,7 @@ export function updateMixin(Clunch) {
             (this.__renderAOP, {}, false, "", false);
 
         // 更新最新数据(目前只支持web端的调试)
-        if (this._platform == 'default') {
+        if (this._platform == 'default' && this._debug) {
 
             // 获取数据用于提供给浏览器调试插件使用
             this.__el.getElementsByTagName('canvas')[0].setAttribute('__clunch__devtool__target__', getClunchBrowserExtensionsData(this));

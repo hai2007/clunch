@@ -203,7 +203,7 @@ region: {
         <h2>运行效果</h2>
         <div id='canvas-5' style='height:360px;'></div>
         <p>
-            打开控制台，点击的时候就会打印你点击结点的信息：
+            点击的时候就会弹框提示给出点击的结点的信息：
         </p>
         <pre q-code>
 attr: {x: 0, y: 0, width: 700, height: 360, data: Array(7), …}
@@ -221,7 +221,7 @@ __proto__: Object
             <span class="public">no-0</span>
             ，没有问题，记录的数据data是
             <span class="public">{value:120}</span>
-            ，也没有问题。我们推荐你打开控制台，点击不同的地方看看打印的结果。
+            ，也没有问题。我们推荐你点击不同的地方看看提示的内容。
         </p>
         <h1 id='fixed-series-end'>
             小结
@@ -261,7 +261,7 @@ __proto__: Object
                 },
                 methods: {
                     doit(target) {
-                        console.log(target);
+                        alert(JSON.stringify(target, null, 4));
                     }
                 }
             });

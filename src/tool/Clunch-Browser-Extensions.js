@@ -6,15 +6,12 @@ export default function (target) {
     };
 
     return JSON.stringify({
+        version: 'v1',// 新增数据版本，方便后期数据格式改变的时候，插件可以给出有益的提示
         render: {
-            Options: target.__renderOptions,
             Series: target.__renderSeries,
             AOP: target.__renderAOP
         },
-        data,
-        animation: target.__animation,
-        width: target._width,
-        height: target._height
+        data
     })
 
 };

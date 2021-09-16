@@ -13,6 +13,9 @@ export function initMixin(Clunch) {
 
         this.__options = options;
 
+        // 是否关闭调试
+        this._debug = 'debug' in options ? options.debug : true;
+
         // 记录平台
         this._platform = "platform" in options ? options.platform : "default";
 
