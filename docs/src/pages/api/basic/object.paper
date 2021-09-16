@@ -30,7 +30,11 @@
             <li>
                 <span class="important">debug</span>
                 ：可选，默认true，表示开启调试，如果设置为false，就会关闭调试（
-                <span class="warn">如果你需要使用浏览器的调试插件，请勿关闭此项</span>
+                <span class="warn">如果需要使用
+                    <a href="https://github.com/clunch-contrib/Clunch-Browser-Extensions/releases" target="_blank" class='link'>
+                        Clunch-Browser-Extensions
+                    </a>
+                    调试插件，请保持开启状态</span>
                 ）。
             </li>
             <li>
