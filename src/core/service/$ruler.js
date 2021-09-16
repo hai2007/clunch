@@ -11,5 +11,5 @@ export default function (maxValue, minValue, num = 5) {
         distance: rulerArray.length <= 1 ? 0 : rulerArray[1] - rulerArray[0],
         num: rulerArray.length - 1,
         ruler: rulerArray
-    };;
+    };
 }
