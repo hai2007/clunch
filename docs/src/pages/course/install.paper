@@ -24,7 +24,7 @@
             <span class="important">Clunch</span>
             会被注册为一个全局变量。
         </p>
-        <h1 id="fixed-cnd">CDN</h1>
+        <h1 id="fixed-cdn">CDN</h1>
         <pre q-code='html'>
             <script src="https://cdn.jsdelivr.net/npm/clunch"></script>
         </pre>
