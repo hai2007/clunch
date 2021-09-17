@@ -76,7 +76,7 @@ module.exports = {
         </h3>
         <p>
             你需要新建一个
-            <span class="important">.clunch文件</span>
+            <span class="important">clunch文件</span>
             ，比如
             <span class="public">demo1.clunch</span>
             ，然后在里面添加下列代码：
@@ -106,9 +106,9 @@ module.exports = {
         </h3>
         <p>
             比如在和上述
-            <span class="important">.clunch文件</span>
+            <span class="important">clunch文件</span>
             同级目录的
-            <span class="important">.js文件</span>
+            <span class="important">js文件</span>
             里面：
         </p>
         <pre q-code>
@@ -144,7 +144,7 @@ new Clunch({
             在上面的例子我们发现，如果随机数过小或过大的时候，文字有部分显示不出来，因为我们设置的文字水平对齐方式是固定居中的。
         </p>
         <p>
-            幸运的是，c-bind指令可以解析一个合法的js表达式，因此，只需要对.clunch进行简单的修改即可（此次修改只涉及<span class="public">text标签</span>，别的不列出了）：
+            幸运的是，c-bind指令可以解析一个合法的js表达式，因此，只需要对clunch文件进行简单的修改即可（此次修改只涉及<span class="public">text标签</span>，别的不列出了）：
         </p>
         <pre q-code='html'>
 <text c-bind:x='value * 5'
