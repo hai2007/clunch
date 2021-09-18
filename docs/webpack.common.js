@@ -30,7 +30,7 @@ module.exports = {
             loader: ['quick-paper/loader/index.js']
         }, {
             test: /\.css$/,
-            loader: ['quick-paper/style-loader/index.js', 'css-loader', 'postcss-loader']
+            loader: ['quick-paper/style-loader/index.js', 'css-loader', 'postcss-loader', './scss-loader.js']
         }, {
             test: /\.js$/,
             loader: 'babel-loader',

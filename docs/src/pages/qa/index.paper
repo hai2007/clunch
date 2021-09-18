@@ -153,6 +153,7 @@ this.radiusArray[0]= 10;
         },
         methods: {
             doScroll(fixedName) {
+                window.clunch_noRefresh = true;
                 window.location.href = (window.location.href + "").replace(/\?fixed=.*$/, '') + "?fixed=" + fixedName;
                 fixedScroll(document.getElementById('fixed-top'), -40);
             }

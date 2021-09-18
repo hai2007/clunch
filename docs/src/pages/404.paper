@@ -1,0 +1,36 @@
+<template>
+    <div>
+        <h2>404</h2>
+        <button @click='reloadPage("#/guide")'>返回首页</button>
+    </div>
+</template>
+<style>
+    [quickpaper] {
+        width: 100vw;
+        height: calc(100vh - 97px);
+        text-align: center;
+        line-height: calc(100vh - 97px);
+
+        &>div {
+            height: 150px;
+            line-height: 4.5em;
+            display: inline-block;
+
+            &>h2 {
+                font-size: 100px;
+                font-family: fantasy;
+            }
+
+            &>button {
+                outline: none;
+                border: none;
+                width: 200px;
+                padding: 10px;
+                font-size: 14px;
+                color: white;
+                background-color: #f44336;
+                cursor: pointer;
+            }
+        }
+    }
+</style>

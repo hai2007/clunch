@@ -23,6 +23,31 @@ QuickPaper.prototype.loadRouter = loadRouter; QuickPaper.prototype.goRouter = go
 import './directives/ui-active';
 import './directives/ui-goto-example';
 
+// 跳转并刷新
+QuickPaper.prototype.reloadPage = url => {
+    window.clunch_noRefresh = true;
+    window.location.href = url;
+    setTimeout(() => {
+        window.location.reload();
+    });
+};
+
+
+// 监听浏览器点击了回退按钮
+if (window.addEventListener)
+    window.addEventListener("popstate", function (e) {
+        setTimeout(() => {
+
+            // 主动跳转的时候可以控制是否需要刷新
+            if (window.clunch_noRefresh) {
+                window.clunch_noRefresh = false;
+            } else {
+                window.location.reload();
+            }
+
+        });
+    }, false);
+
 //根对象
 window.quickPaper = new QuickPaper({
 

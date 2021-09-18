@@ -297,10 +297,12 @@
         },
         methods: {
             openRouter(pagename) {
+                window.clunch_noRefresh = true;
                 this.goRouter(page => this.page = page, ['api', pagename]);
                 this.doScroll("top");
             },
             doScroll(fixedName) {
+                window.clunch_noRefresh = true;
                 window.location.href = (window.location.href + "").replace(/\?fixed=.*$/, '') + "?fixed=" + fixedName;
                 fixedScroll(document.getElementById('api-id'), 44);
             }

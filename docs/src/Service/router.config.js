@@ -105,6 +105,16 @@ const pages = {
 
 };
 
+let loadPage = function (page) {
+
+    if (page) {
+        return page.content();
+    } else {
+        return (() => import('../pages/404.paper'))();
+    }
+
+};
+
 
 export function loadRouter(doback, deep) {
 
@@ -112,7 +122,7 @@ export function loadRouter(doback, deep) {
     for (let i = 0; i < deep; i++) {
         page = page[routers[i]] || page[page['_default_']];
     }
-    page.content().then(function (data) {
+    loadPage(page).then(function (data) {
         doback(data.default);
     });
 
@@ -126,7 +136,7 @@ export function goRouter(doback, keyArray) {
         router += "/" + keyArray[i];
     }
 
-    page.content().then(function (data) {
+    loadPage(page).then(function (data) {
         doback(data.default);
     });
 
