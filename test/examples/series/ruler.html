@@ -28,11 +28,12 @@
 
         <ruler x='100' y='120' c-bind:length='_height - 200' c-bind:value='value1' direction='TB'></ruler>
 
-        <polar-ruler c-bind:cx='_width*0.5' c-bind:cy='_height*0.5' radius='300' c-bind:value='value1' deg='1.5pi'>
+        <polar-ruler c-bind:cx='_width*0.5' c-bind:cy='_height*0.5' radius='300'
+            value="['星期1', '星期2', '星期3', '星期4', '星期5', '星期6', '星期7']" deg='1.5pi'>
         </polar-ruler>
 
-        <polar-ruler c-bind:cx='_width*0.5' c-bind:cy='_height*0.5' radius='400' color='green' c-bind:value='value1'
-            begin='0.2pi' deg='1.5pi'></polar-ruler>
+        <polar-ruler c-bind:cx='_width*0.5' c-bind:cy='_height*0.5' radius='400' color='green'
+            value='["第一季度", "第二季度", "第三季度", "第四季度"]' begin='0.2pi' deg='1.5pi'></polar-ruler>
 
     </div>
 
@@ -40,7 +41,7 @@
 
         window.clunch = new Clunch({
             el: document.getElementById('root'),
-            data:function() {
+            data: function () {
                 return {
                     value1: ["星期1", "星期2", "星期3", "星期4", "星期5", "星期6", "星期7"]
                 };

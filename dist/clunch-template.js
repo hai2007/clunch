@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 2.0.4
+ * version 2.1.0
  *
  * Copyright (c) 2018-2021 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Thu Sep 16 2021 09:50:02 GMT+0800 (中国标准时间)
+ * Date:Fri Sep 24 2021 16:21:52 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -1105,6 +1105,237 @@
     return inputArray[inputArray.length - 1].apply(this, methodServers);
   }
 
+  var toString$1 = Object.prototype.toString;
+  /**
+   * 获取一个值的类型字符串[object type]
+   *
+   * @param {*} value 需要返回类型的值
+   * @returns {string} 返回类型字符串
+   */
+
+  function getType$1 (value) {
+    if (value == null) {
+      return value === undefined ? '[object Undefined]' : '[object Null]';
+    }
+
+    return toString$1.call(value);
+  }
+
+  /**
+   * 判断一个值是不是String。
+   *
+   * @param {*} value 需要判断类型的值
+   * @returns {boolean} 如果是String返回true，否则返回false
+   */
+
+  function _isString$1 (value) {
+    var type = _typeof(value);
+
+    return type === 'string' || type === 'object' && value != null && !Array.isArray(value) && getType$1(value) === '[object String]';
+  }
+
+  var isString$1 = _isString$1;
+
+  function _ReadString (express) {
+    var reader = {
+      index: -1,
+      currentChar: null
+    }; // 读取下一个字符
+
+    reader.readNext = function () {
+      reader.currentChar = reader.index++ < express.length - 1 ? express[reader.index] : null;
+      return reader.currentChar;
+    }; // 获取往后num个值
+
+
+    reader.getNextN = function (num) {
+      return express.substring(reader.index, num + reader.index > express.length ? express.length : num + reader.index);
+    };
+
+    return reader;
+  }
+
+  /*!
+   * 💡 - 字符串操作
+   * https://github.com/hai2007/tool.js/blob/master/string.js
+   *
+   * author hai2007 < https://hai2007.gitee.io/sweethome >
+   *
+   * Copyright (c) 2021-present hai2007 走一步，再走一步。
+   * Released under the MIT license
+   */
+
+  var ReadString = _ReadString;
+
+  function analyseWord (express) {
+    // 剔除开头和结尾的空白
+    express = express.trim(); // 获取字符串分析对象
+
+    var reader = ReadString(express);
+    var wordArray = [];
+    var tempWord = "";
+    reader.readNext(); // 定义一个追加普通串的方法
+
+    var pushNormal = function pushNormal() {
+      tempWord = tempWord.trim();
+
+      if (tempWord != '') {
+        wordArray.push({
+          type: "normal",
+          value: tempWord
+        });
+      }
+
+      tempWord = "";
+    };
+
+    while (true) {
+      if (reader.index >= express.length) break; // 如果是边界符号
+
+      if (['{', '}', ',', '[', ']', ':'].indexOf(reader.currentChar) > -1) {
+        pushNormal();
+        wordArray.push({
+          type: "insign",
+          value: reader.currentChar
+        });
+        reader.readNext();
+      } // 如果遇到字符串，应该是一个独立的单词
+      else if (['"', "'"].indexOf(reader.currentChar) > -1) {
+          var tempStrWord = "";
+
+          while (['"', "'"].indexOf(reader.readNext()) < 0) {
+            tempStrWord += reader.currentChar;
+          }
+
+          reader.readNext();
+          wordArray.push({
+            type: "string",
+            value: tempStrWord
+          });
+        } else {
+          tempWord += reader.currentChar;
+          reader.readNext();
+        }
+    }
+
+    return wordArray;
+  }
+
+  var toValue = function toValue(word) {
+    if (word.type != 'string' && word.type != 'object') {
+      // 数字
+      if (/[+-]{0,1}\d{1,}\.{0,1}\d{0,}/.test(word.value)) {
+        return +word.value;
+      } // undefined
+      else if (word.value == 'undefined') {
+          return undefined;
+        } // null
+        else if (word.value == 'null') {
+            return null;
+          } // false
+          else if (word.value == 'false') {
+              return false;
+            } // true
+            else if (word.value == 'true') {
+                return true;
+              }
+    }
+
+    return word.value;
+  };
+
+  function toValue$1 (wordArray) {
+    var value, i; // 是json
+
+    if (wordArray[0].value == '{') {
+      value = {};
+
+      for (i = 3; i < wordArray.length; i += 4) {
+        value[wordArray[i - 2].value] = toValue(wordArray[i]);
+      }
+    } // 数组
+    else {
+        value = [];
+
+        for (i = 2; i < wordArray.length; i += 2) {
+          value.push(toValue(wordArray[i - 1]));
+        }
+      }
+
+    return {
+      type: "object",
+      value: value
+    };
+  }
+
+  /*!
+   * 🔪 - 和json相关的一些操作
+   * https://github.com/hai2007/algorithm.js/blob/master/json.js
+   *
+   * author hai2007 < https://hai2007.gitee.io/sweethome >
+   *
+   * Copyright (c) 2021-present hai2007 走一步，再走一步。
+   * Released under the MIT license
+   */
+
+  var toJSON = function toJSON(express) {
+    if (isString$1(express)) {
+      // 先分析出来单词
+      var wordArray = analyseWord(express);
+      /**
+       * 思路：
+       * 从后往前找，找到第一个需要归结的，直接归结，
+       * 归结完毕以后，继续，知道找到开头，说明归结完毕，
+       * 这样设计的好处是：
+       * 从后往前找，一定是叶子，这就消除了递归。
+       */
+
+      var i = wordArray.length - 1,
+          j; // 只要单词数组归结完毕
+
+      while (wordArray.length > 1) {
+        // 从后往前找第一个需要归结的子对象
+        while (i >= 0 && (wordArray[i].type != 'insign' || ['{', '['].indexOf(wordArray[i].value) < 0)) {
+          i = i - 1;
+        }
+
+        if (i < 0) {
+          // 如果到开头都没有遇到，缺少开始符号
+          throw new Error("Illegal express : " + express + "\nstep='toOne-searchBeginIndex',wordArray=" + wordArray);
+        } // 然后合并
+
+
+        j = i + 1;
+        var subWordArray = [wordArray[i]];
+
+        while (j < wordArray.length && (wordArray[j].type != 'insign' || wordArray[j].value != {
+          "{": "}",
+          "[": "]"
+        }[wordArray[i].value])) {
+          subWordArray.push(wordArray[j]);
+          j = j + 1;
+        }
+
+        if (j >= wordArray.length) {
+          // 如果到结尾都没有需要应该闭合的符号，缺少闭合符号
+          throw new Error("Illegal express : " + express + "\nstep='toOne-searchEndIndex',wordArray=" + wordArray);
+        } else {
+          // 结尾追加进去
+          subWordArray.push(wordArray[j]); // 归结
+
+          wordArray[i] = toValue$1(subWordArray); // 调整
+
+          wordArray.splice(i + 1, j - i);
+        }
+      } // 返回计算结果
+
+
+      return wordArray[0].value;
+    } else {
+      throw new Error('The data passed is not a string.');
+    }
+  };
+
   var calcValue = function calcValue(type, express) {
     switch (type) {
       // boolean
@@ -1129,7 +1360,7 @@
       case 'json':
         {
           if (isString(express)) {
-            return JSON.parse(express);
+            return toJSON(express.replace(/\&quot;/g, ''));
           }
 
           return express;
@@ -1975,37 +2206,6 @@
       return this;
     };
   }
-
-  var toString$1 = Object.prototype.toString;
-  /**
-   * 获取一个值的类型字符串[object type]
-   *
-   * @param {*} value 需要返回类型的值
-   * @returns {string} 返回类型字符串
-   */
-
-  function getType$1 (value) {
-    if (value == null) {
-      return value === undefined ? '[object Undefined]' : '[object Null]';
-    }
-
-    return toString$1.call(value);
-  }
-
-  /**
-   * 判断一个值是不是String。
-   *
-   * @param {*} value 需要判断类型的值
-   * @returns {boolean} 如果是String返回true，否则返回false
-   */
-
-  function _isString$1 (value) {
-    var type = _typeof(value);
-
-    return type === 'string' || type === 'object' && value != null && !Array.isArray(value) && getType$1(value) === '[object String]';
-  }
-
-  var isString$1 = _isString$1;
 
   var $RegExp = {
     // 空白字符:http://www.w3.org/TR/css3-selectors/#whitespace

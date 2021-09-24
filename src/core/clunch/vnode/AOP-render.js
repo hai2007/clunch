@@ -1,5 +1,6 @@
 
 import { isString } from '@hai2007/tool/type';
+import { toJSON } from '@hai2007/algorithm/json';
 
 let calcValue = (type, express) => {
 
@@ -28,7 +29,7 @@ let calcValue = (type, express) => {
         // JSON
         case 'json': {
             if (isString(express)) {
-                return JSON.parse(express);
+                return toJSON(express.replace(/\&quot;/g,''));
             }
             return express;
         }
